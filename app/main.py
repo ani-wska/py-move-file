@@ -3,11 +3,10 @@ import os
 
 def move_file(command: str) -> None:
     splitted_command = command.split()
-    src = splitted_command[1]
-    dest = splitted_command[2]
+    mv, src, dest = splitted_command
 
     if dest.endswith("/"):
-        dest = os.path.join(os.getcwd(), dest)
+        dest = os.path.join(dest, os.path.basename(src))
 
     directory = os.path.dirname(dest)
 
